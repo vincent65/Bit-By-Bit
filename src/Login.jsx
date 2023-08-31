@@ -6,13 +6,15 @@ export const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
+        
+        props.Log(email, pass)
     }
 
     return (
         <div className="auth-form-container">
             <h2 style={{color:'#C0C0C0'}}>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
+                {(props.error != "") ? (<div className="error">{props.error}</div>) : ("")}
                 <label style={{color:'white'}} htmlFor="email">Email</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
                 <label style={{color:'white'}} htmlFor="password">Password</label>
